@@ -1,10 +1,20 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view />
+  <Footer />
 </template>
+<script lang="ts">
+// import Vue from "vue";
+// import { Options } from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
+import Footer from "./components/BottomFooter.vue"; // @ is an alias to /src
+
+@Options({
+  components: {
+    Footer,
+  },
+})
+export default class App extends Vue {}
+</script>
 
 <style lang="less">
 #app {
