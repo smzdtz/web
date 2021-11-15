@@ -7,10 +7,10 @@
       <p>你值得更好的生活</p>
     </div>
     <div class="search">
-      <Input
+      <InputSearch
         placeholder="输入股票关键字，查看公司价值"
         :loading="false"
-        @change="handleChange"
+        @search="handleChange"
       />
       <div>
         <a
@@ -27,19 +27,24 @@
 <script lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { Input } from "ant-design-vue"; // @ is an alias to /src
+import { InputSearch } from "ant-design-vue"; // @ is an alias to /src
 import stock from "../service/stock";
 
 export default {
   components: {
-    Input,
+    InputSearch,
   },
   setup() {
     const stocks = ref();
     const router = useRouter();
-    const handleChange = async (e: any) => {
-      const res = await stock.getStocks(e.target.value);
-      stocks.value = res.data;
+    const handleChange = async (keyword: string) => {
+      const res = await stock.getStocks(keyword);
+      console.log(res.data);
+      if (res.data.length === 1) {
+        goToDetail(res.data[0]);
+      } else {
+        stocks.value = res.data;
+      }
     };
     const goToDetail = (s: any) => {
       router.push("/about/" + s.Secucode);
@@ -81,7 +86,7 @@ export default {
   }
 }
 .search {
-  ::v-deep(.ant-input) {
+  ::v-deep(.ant-input-search) {
     border: 1px solid #dfe1e5;
     border-radius: 24px;
     margin-bottom: 12px;
