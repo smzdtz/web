@@ -4,7 +4,7 @@
       <div className="heading-wrapper">
         <h2>一起做价值投资的日子</h2>
       </div>
-      <p>稳健的报酬，更悠闲的生活</p>
+      <p>你值得更好的生活</p>
     </div>
     <div class="search">
       <Input
@@ -27,8 +27,6 @@
 <script lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { Options, Vue } from "vue-class-component";
-import HelloWorld from "../components/HelloWorld.vue";
 import { Input } from "ant-design-vue"; // @ is an alias to /src
 import stock from "../service/stock";
 
@@ -104,6 +102,7 @@ export default {
     // border: 1px solid;
     width: 80%;
     // height: 46px;
+    text-align: center;
     a {
       display: inline-block;
       margin: 0 12px;

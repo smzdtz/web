@@ -38,7 +38,7 @@ export default class Stock {
    * @return {HttpResponse} result
    */
   static async getProfile(params: stockProfileParams): Promise<AxiosResponse> {
-    return Axios("/v1/stock/profile", {
+    return Axios("/v1/stock/eastmoney/getProfile", {
       method: "get",
       responseType: "json",
       params: {
@@ -65,5 +65,53 @@ export default class Stock {
       params: { keyword },
     });
     return res;
+  }
+
+  static async getJiaZhiPingGu(
+    params: stockProfileParams
+  ): Promise<AxiosResponse> {
+    return Axios("/v1/stock/eastmoney/getJiaZhiPingGu", {
+      method: "get",
+      responseType: "json",
+      params: {
+        ...params,
+      },
+    });
+  }
+
+  static async getZongHePingJia(
+    params: stockProfileParams
+  ): Promise<AxiosResponse> {
+    return Axios("/v1/stock/eastmoney/getZongHePingJia", {
+      method: "get",
+      responseType: "json",
+      params: {
+        ...params,
+      },
+    });
+  }
+
+  static async getStockNews(
+    params: stockProfileParams
+  ): Promise<AxiosResponse> {
+    return Axios("/v1/stock/eastmoney/getStockNews", {
+      method: "get",
+      responseType: "json",
+      params: {
+        ...params,
+      },
+    });
+  }
+
+  static async getIndicator(
+    params: stockProfileParams
+  ): Promise<AxiosResponse> {
+    return Axios("/v1/stock/eastmoney/getIndicator", {
+      method: "get",
+      responseType: "json",
+      params: {
+        ...params,
+      },
+    });
   }
 }
